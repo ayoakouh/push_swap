@@ -1,62 +1,51 @@
-source = ft_split.c libft_utils2.c libft_utils1.c op_A.c op_B.c parssing.c push_swap.c\
-			sorting.c
-
-objects = $(source:.c=.o)
-
 NAME = push_swap
-
-CFLAGS = -Werror -Wall -Wextra
+BONUS_NAME = checker
 
 CC = cc
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
 
-RM = rm -rf
+MANDATORY_DIR = mandatory
+MANDATORY_SRCS = \
+	$(MANDATORY_DIR)/ft_split.c \
+	$(MANDATORY_DIR)/libft_utils1.c \
+	$(MANDATORY_DIR)/libft_utils2.c \
+	$(MANDATORY_DIR)/op_A.c \
+	$(MANDATORY_DIR)/op_B.c \
+	$(MANDATORY_DIR)/parssing.c \
+	$(MANDATORY_DIR)/push_swap.c \
+	$(MANDATORY_DIR)/sort_1.c \
+	$(MANDATORY_DIR)/sort_2.c \
+	$(MANDATORY_DIR)/sort_utils.c
+
+MANDATORY_OBJS = $(MANDATORY_SRCS:.c=.o)
+
+BONUS_DIR = bonus
+GNL_DIR = Gnl
+BONUS_SRCS = \
+	$(BONUS_DIR)/checker_utils_1.c \
+	$(BONUS_DIR)/checker_utils_2.c \
+	$(BONUS_DIR)/checker.c \
+	$(BONUS_DIR)/ft_split.c \
+	$(BONUS_DIR)/op_a.c \
+	$(BONUS_DIR)/op_b.c \
+	$(BONUS_DIR)/parssing_of_checker.c \
+	$(GNL_DIR)/get_next_line_utils.c \
+	$(GNL_DIR)/get_next_line.c
+
+BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(objects)
-	$(CC) $(CFLAGS) $(objects) -o $(NAME)
+$(NAME): $(MANDATORY_OBJS)
+	$(CC) $(CFLAGS) $(MANDATORY_OBJS) -o $(NAME)
 
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+bonus: $(BONUS_OBJS)
+	$(CC) $(CFLAGS) $(BONUS_OBJS) -o $(BONUS_NAME)
 
 clean:
-	$(RM) $(objects)
+	rm -f $(MANDATORY_OBJS) $(BONUS_OBJS)
 
 fclean: clean
-	$(RM) $(NAME)
+	rm -f $(NAME) $(BONUS_NAME)
 
 re: fclean all
-
-#-fsanitize=address -g
-
-# CC = cc
-# CFLAGS = -Wall -Wextra -Werror -fsanitize=address 
-
-# SRCS            =    ft_split.c libft_utils2.c libft_utils1.c op_A.c op_B.c parssing.c push_swap.c \
-# 					#  parse_one.c 
-# OBJS            = $(SRCS:.c=.o)
-
-# BONUS            = 
-# BONUS_OBJS        = $(BONUS:.c=.o)
-
-# RM                = rm -f
-
-# NAME            = push_swap.a
-
-# all:    $(NAME)
-
-# bonus:    $(BONUS_OBJS)
-# 	ar rc $(NAME) $^
-# $(NAME):    $(OBJS)
-# 	ar rc $(NAME) $^
-# %.o: %.c libft.h
-# 	$(CC) $(CFLAGS) -c $< -o $@
-
-# clean:
-# 	$(RM) $(OBJS) $(BONUS_OBJS)
-
-# fclean:    clean
-# 	$(RM) $(NAME)
-
-# re: fclean $(NAME)
-# # -fsanitize=address -g
