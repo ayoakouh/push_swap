@@ -6,7 +6,7 @@
 /*   By: ayoakouh <ayoakouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 14:34:05 by ayoakouh          #+#    #+#             */
-/*   Updated: 2025/02/01 12:52:24 by ayoakouh         ###   ########.fr       */
+/*   Updated: 2025/02/03 18:40:00 by ayoakouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ int	is_valide(char *str)
 	i = 0;
 	if ((str[i] == '-' || str[i] == '+') && str[i + 1] == '\0')
 		return (0);
-	if ((str[i] == '-' || str[i] == '+') && (str[i + 1] == '0'))
-		return (0);
+	// if ((str[i] == '-' || str[i] == '+') && (str[i + 1] == '0'))
+	// 	return (0);
 	if (str != NULL && (str[i] == '-'
 			|| str[i] == '+') && ft_isdigit(str[i + 1]) == 1)
 		i++;

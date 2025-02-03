@@ -6,28 +6,13 @@
 /*   By: ayoakouh <ayoakouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 10:02:12 by ayoakouh          #+#    #+#             */
-/*   Updated: 2025/02/01 12:19:23 by ayoakouh         ###   ########.fr       */
+/*   Updated: 2025/02/03 11:40:37 by ayoakouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static int	ft_strchr(char *s)
-{
-	int	i;
-
-	i = 0;
-	if (!s)
-		return (0);
-	while (s[i])
-	{
-		if (s[i] == '\n')
-			return (1);
-		i++;
-	}
-	return (0);
-}
-static char	*read_line(int fd, char *str)
+char	*read_line(int fd, char *str)
 {
 	char	*store;
 	ssize_t	n_byte;
@@ -45,7 +30,7 @@ static char	*read_line(int fd, char *str)
 			return (free(store), free(str), NULL);
 		}
 		store[n_byte] = '\0';
-		temp = ft_strjoin(str, store);
+		temp = ft_strjoin2(str, store);
 		if (!temp)
 			return (free(str), str = NULL, free(store), NULL);
 		str = temp;
@@ -55,7 +40,7 @@ static char	*read_line(int fd, char *str)
 	return (free(store), str);
 }
 
-static char	*extract_line(char *str)
+char	*extract_line(char *str)
 {
 	int		i;
 	char	*new;
@@ -84,7 +69,7 @@ static char	*extract_line(char *str)
 	return (new[i] = '\0', new);
 }
 
-static char	*update_line(char *str)
+char	*update_line(char *str)
 {
 	char	*ptr;
 	int		i;

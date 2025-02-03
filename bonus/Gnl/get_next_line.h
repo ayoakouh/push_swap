@@ -6,7 +6,7 @@
 /*   By: ayoakouh <ayoakouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 20:34:55 by ayoakouh          #+#    #+#             */
-/*   Updated: 2025/02/01 12:19:45 by ayoakouh         ###   ########.fr       */
+/*   Updated: 2025/02/03 11:40:23 by ayoakouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@
 # endif
 
 char	*get_next_line(int fd);
+int		ft_strchr(char *s);
 char	*ft_strdup(const char *s);
 size_t	ft_strlen(const char *str);
-char	*ft_strjoin(char *s1, char *s2);
+char	*ft_strjoin2(char *s1, char *s2);
 
 #endif

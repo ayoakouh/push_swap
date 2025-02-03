@@ -6,7 +6,7 @@
 /*   By: ayoakouh <ayoakouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 09:26:05 by ayoakouh          #+#    #+#             */
-/*   Updated: 2025/02/02 13:52:15 by ayoakouh         ###   ########.fr       */
+/*   Updated: 2025/02/03 18:29:01 by ayoakouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@
 
 typedef struct s_stack
 {
-    int             data;
-    char            *operation;
-    struct s_stack *next;
+	int             data;
+	char            *operation;
+	struct s_stack *next;
 } t_stack;
 
 char	**ft_split(char const *s, char c);
@@ -44,7 +44,7 @@ t_stack	*creatnew_node(int value);
 int	ft_lstsize(t_stack *lst);
 void	ft_lstadd_back(t_stack **lst, t_stack *new);
 t_stack	*ft_lstlast(t_stack *lst);
-int check_args(int ac, char **av);   //here;
+char  **check_args(int ac, char **av);   //here;
 char	**ft(int ac, char **av);   //here;
 int	check_empty(char **av);
 int	duplicate(char **str);
@@ -56,9 +56,7 @@ void	rot_a_b(t_stack **a, t_stack **b);
 void	reverse_rot_ab(t_stack **a, t_stack **b);
 int	check_sorted(t_stack **a);
 char	*get_next_line(int fd);
-
-
-
+void free_av(char **av);
 
 
 #endif

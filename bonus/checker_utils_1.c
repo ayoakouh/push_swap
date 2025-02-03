@@ -6,7 +6,7 @@
 /*   By: ayoakouh <ayoakouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 09:33:19 by ayoakouh          #+#    #+#             */
-/*   Updated: 2025/02/01 09:49:04 by ayoakouh         ###   ########.fr       */
+/*   Updated: 2025/02/03 16:51:23 by ayoakouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ char	*ft_strdup(const char *s)
 	int		i;
 
 	i = 0;
-	ptr = (char *) malloc (sizeof(char) * (ft_strlen(s) + 1));
+	ptr = malloc (sizeof(char) * (ft_strlen(s) + 1));
 	if (ptr == NULL)
 		return (NULL);
 	while (s[i] != '\0')
@@ -101,25 +101,5 @@ long	ft_atoi(char *str)
 		res = res * 10 + (str[i] - '0');
 		i++;
 	}
-	if (str[i] && (str[i] < '0' || str[i] > '9'))
-		return (LONG_MAX);
 	return (res * signe);
-}
-int	ft_strcmp(char *s1, char *s2)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	while (s1[i] == '0')
-		i++;
-	while (s2[j] == '0')
-		j++;
-	while (s1[i] != '\0' && s2[j] != '\0' && s1[i] == s2[j])
-	{
-		i++;
-		j++;
-	}
-	return (s1[i] - s2[j]);
 }

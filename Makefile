@@ -2,7 +2,7 @@ NAME = push_swap
 BONUS_NAME = checker
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
+CFLAGS = -Wall -Wextra -Werror
 
 MANDATORY_DIR = mandatory
 MANDATORY_SRCS = \
@@ -28,9 +28,10 @@ BONUS_SRCS = \
 	$(BONUS_DIR)/ft_split.c \
 	$(BONUS_DIR)/op_a.c \
 	$(BONUS_DIR)/op_b.c \
+	$(BONUS_DIR)/checker_utils_3.c \
 	$(BONUS_DIR)/parssing_of_checker.c \
-	$(GNL_DIR)/get_next_line_utils.c \
-	$(GNL_DIR)/get_next_line.c
+	$(BONUS_DIR)/$(GNL_DIR)/get_next_line_utils.c \
+	$(BONUS_DIR)/$(GNL_DIR)/get_next_line.c
 
 BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 
