@@ -1,50 +1,39 @@
-NAME = push_swap
-BONUS_NAME = checker
-
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-MANDATORY_DIR = mandatory
-MANDATORY_SRCS = \
-	$(MANDATORY_DIR)/ft_split.c \
-	$(MANDATORY_DIR)/libft_utils1.c \
-	$(MANDATORY_DIR)/libft_utils2.c \
-	$(MANDATORY_DIR)/op_A.c \
-	$(MANDATORY_DIR)/op_B.c \
-	$(MANDATORY_DIR)/parssing.c \
-	$(MANDATORY_DIR)/push_swap.c \
-	$(MANDATORY_DIR)/sort_1.c \
-	$(MANDATORY_DIR)/sort_2.c \
-	$(MANDATORY_DIR)/sort_utils.c
+SRCS = M/ft_split.c M/libft_utils1.c M/libft_utils2.c M/op_A.c M/op_B.c \
+		M/parssing.c M/push_swap.c M/sort_1.c M/sort_2.c M/sort_utils.c \
+		M/sort_0.c \
 
-MANDATORY_OBJS = $(MANDATORY_SRCS:.c=.o)
+OBJS = $(SRCS:.c=.o)
 
-BONUS_DIR = bonus
-GNL_DIR = Gnl
-BONUS_SRCS = \
-	$(BONUS_DIR)/checker_utils_1.c \
-	$(BONUS_DIR)/checker_utils_2.c \
-	$(BONUS_DIR)/checker.c \
-	$(BONUS_DIR)/ft_split.c \
-	$(BONUS_DIR)/op_a.c \
-	$(BONUS_DIR)/op_b.c \
-	$(BONUS_DIR)/checker_utils_3.c \
-	$(BONUS_DIR)/parssing_of_checker.c \
-	$(BONUS_DIR)/$(GNL_DIR)/get_next_line_utils.c \
-	$(BONUS_DIR)/$(GNL_DIR)/get_next_line.c
+BONUS_SRCS = bonus/checker_utils_1_bonus.c bonus/checker_utils_2_bonus.c bonus/checker_utils_3_bonus.c \
+			bonus/checker_bonus.c bonus/ft_split_bonus.c bonus/op_a_bonus.c bonus/op_AB_bonus.c bonus/op_b_bonus.c \
+			bonus/parssing_of_checker_bonus.c bonus/get_next_line_utils_bonus.c bonus/get_next_line_bonus.c\
+
 
 BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 
+NAME = push_swap
+BONUS_NAME = checker
+
 all: $(NAME)
 
-$(NAME): $(MANDATORY_OBJS)
-	$(CC) $(CFLAGS) $(MANDATORY_OBJS) -o $(NAME)
+$(NAME):$(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+
+$(OBJS): M/push_swap.h
 
 bonus: $(BONUS_OBJS)
 	$(CC) $(CFLAGS) $(BONUS_OBJS) -o $(BONUS_NAME)
 
+$(BONUS_OBJS): bonus/checker_bonus.h bonus/get_next_line_bonus.h
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
 clean:
-	rm -f $(MANDATORY_OBJS) $(BONUS_OBJS)
+	rm -f $(OBJS) $(BONUS_OBJS)
 
 fclean: clean
 	rm -f $(NAME) $(BONUS_NAME)
